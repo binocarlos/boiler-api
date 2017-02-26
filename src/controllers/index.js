@@ -15,7 +15,7 @@ const Controllers = (dbclient, eventBus, userFactory) => {
   const commandlog = CommandLog(eventBus)
   const utils = Utils(eventBus)
 
-  const coreControllers = return {
+  const coreControllers = {
     connection,
     transaction,
     user,

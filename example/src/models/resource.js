@@ -1,7 +1,7 @@
 "use strict";
 const async = require('async')
-const SQL = require('../database/sql')
-const selectors = require('../database/selectors')
+const SQL = require('boiler-api/src/database/sql')
+const selectors = require('boiler-api/src/database/selectors')
 
 // https://www.postgresql.org/docs/9.3/static/ltree.html
 

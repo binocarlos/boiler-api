@@ -3,7 +3,7 @@
 const AccessControl = require('./control')
 
 const factory = (settings, controllers, UserAccess) => {
-  const systemAccess = AccessControl(controllers, {
+  const systemAccess = AccessControl(settings, controllers, {
     getInstallationAccess: (id) => {
       return id == settings.systeminstallation ?
         'viewer' :

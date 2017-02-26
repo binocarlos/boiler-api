@@ -107,7 +107,7 @@ const getIdParam = (req, name) => {
   return isNaN(val) ? null : val
 }
 
-const httpbind = (app, method) => {
+const httpbind = (app, base, method) => {
   const methodHandler = app[method]
   if(!methodHandler) throw new Error('unknown method: ' + method)
   function handler() {
@@ -118,11 +118,11 @@ const httpbind = (app, method) => {
   return handler
 }
 
-const httpbinds = (app) => {
-  const get = httpbind(app, 'get')
-  const post = httpbind(app, 'post')
-  const put = httpbind(app, 'put')
-  const del = httpbind(app, 'delete')
+const httpbinds = (app, base) => {
+  const get = httpbind(app, base, 'get')
+  const post = httpbind(app, base, 'post')
+  const put = httpbind(app, base, 'put')
+  const del = httpbind(app, base, 'delete')
 
   return {
     get: get,

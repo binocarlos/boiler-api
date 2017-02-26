@@ -30,14 +30,18 @@ services:
     container_name: boilerapi_frontend
   api:
     build:
-      context: ./
+      context: ./example
       dockerfile: Dockerfile
     container_name: boilerapi_api
     links:
       - postgres:postgres
       - redis:redis
     volumes:
-      - ./api/src:/app/api/src
+      - ./example/src:/app/src
+      - ./src:/app/node_modules/boiler-api/src
+    entrypoint:
+      - "sleep"
+      - "10000000"
     environment:
       NODE_ENV: development
       LOGLEVEL: trace

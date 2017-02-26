@@ -1,10 +1,10 @@
 "use strict";
 
 const async = require('async')
-const tools = require('../tools')
+const tools = require('boiler-api/src/tools')
 
 const ClientModel = require('../models/client')
-const UserModel = require('../models/user')
+const UserModel = require('boiler-api/src/models/user')
 
 const ClientController = (eventBus) => {
   

@@ -59,7 +59,7 @@ const appFactory = (opts) => {
   })
 
   // routes
-  const access = Access(settings, controllers, opts.access)
+  const access = AccessControl(settings, controllers, opts.access)
   const routes = Routes(settings, controllers, opts.routes)
   
 

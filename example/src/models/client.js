@@ -1,9 +1,9 @@
 "use strict";
 const async = require('async')
-const SQL = require('../database/sql')
-const selectors = require('../database/selectors')
+const SQL = require('boiler-api/src/database/sql')
+const selectors = require('boiler-api/src/database/selectors')
 
-const UserModel = require('./user')
+const UserModel = require('boiler-api/src/models/user')
 
 /*
 

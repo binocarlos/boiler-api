@@ -9,7 +9,7 @@ const Installations = require('./installation')
 
 const Routes = (settings, controllers, userRoutes) => (app, access) => {
 
-  const binds = tools.httpbinds(app)
+  const binds = tools.httpbinds(app, settings.base)
 
   const version = Version()
   const auth = Auth(controllers)

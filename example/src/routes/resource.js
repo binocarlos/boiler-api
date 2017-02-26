@@ -2,7 +2,7 @@
 const urlparse = require('url').parse
 const async = require('async')
 
-const tools = require('../tools')
+const tools = require('boiler-api/src/tools')
 
 function Resources(controllers) {
 

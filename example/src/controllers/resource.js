@@ -1,7 +1,7 @@
 "use strict";
 
 const async = require('async')
-const tools = require('../tools')
+const tools = require('boiler-api/src/tools')
 
 const ResourceModel = require('../models/resource')
 
