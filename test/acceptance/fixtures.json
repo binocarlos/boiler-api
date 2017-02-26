@@ -1,0 +1,98 @@
+{
+  "resourceNode": {
+    "name": "top folder",
+    "type": "folder",
+    "labels": [["color","red"],["size","small"]],
+    "meta": {
+      "price": 10
+    }
+  },
+  "resourceTree": {
+    "name": "top folder",
+    "type": "folder",
+    "labels": [["color","red"],["size","small"]],
+    "meta": {
+      "price": 10
+    },
+    "children": [{
+      "name": "middle folder",
+      "type": "folder",
+      "labels": [["color","green"],["size","medium"]],
+      "meta": {
+        "price": 20
+      },
+      "children": [{
+        "name": "lower folder",
+        "type": "folder",
+        "labels": [["color","yellow"],["size","big"]],
+        "meta": {
+          "price": 30
+        }
+      }]
+    }]
+  },
+  "resourceTree2": {
+    "name": "top",
+    "type": "folder",
+    "labels": [["color","red"],["size","small"]],
+    "meta": {
+      "price": 10
+    },
+    "children": [{
+      "name": "middle",
+      "type": "folder",
+      "labels": [["color","green"],["size","medium"]],
+      "meta": {
+        "price": 20
+      },
+      "children": [{
+        "name": "lower",
+        "type": "folder",
+        "labels": [["color","yellow"],["size","big"]],
+        "meta": {
+          "price": 30
+        }
+      }]
+    }]
+  },
+  "materialsFolder": {
+    "name": "Materials",
+    "type": "folder",
+    "labels": [],
+    "meta": {
+      
+    },
+    "children": [{
+      "name": "carpenter",
+      "type": "labour",
+      "labels": [],
+      "meta": {
+        "price": 30,
+        "unit": "day"
+      }
+    },{
+      "name": "plasterer",
+      "type": "labour",
+      "labels": [],
+      "meta": {
+        "price": 40,
+        "unit": "day"
+      }
+    }]
+  },
+  "resourceTypes": [{
+    "name": "A Folder",
+    "type": "folder",
+    "labels": [],
+    "meta": {
+      
+    }
+  },{
+    "name": "An Item",
+    "type": "item",
+    "labels": [],
+    "meta": {
+      
+    }
+  }]
+}

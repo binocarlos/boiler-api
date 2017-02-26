@@ -1,0 +1,50 @@
+version: '2'
+services:
+  redis:
+    image: redis
+    container_name: boilerapi_redis
+  postgres:
+    image: postgres:9.6.1
+    container_name: boilerapi_postgres
+    environment:
+      POSTGRES_USER: boilerapi
+      POSTGRES_PASSWORD: boilerapi
+      POSTGRES_DB: boilerapi
+  router:
+    image: binocarlos/noxy
+    container_name: boiler_router
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - api
+    links:
+      - frontend:frontend
+      - api:api
+    environment:
+      NOXY_API_FRONT: /api/v1
+      NOXY_API_HOST: api
+      NOXY_DEFAULT_HOST: frontend
+  frontend:
+    image: binocarlos/boiler-ui
+    container_name: boilerapi_frontend
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: boilerapi_api
+    links:
+      - postgres:postgres
+      - redis:redis
+    volumes:
+      - ./api/src:/app/api/src
+    environment:
+      NODE_ENV: development
+      LOGLEVEL: trace
+      REDIS_SERVICE_HOST: redis
+      REDIS_SERVICE_PORT: 6379
+      POSTGRES_SERVICE_HOST: postgres
+      POSTGRES_SERVICE_PORT: 5432
+      POSTGRES_SERVICE_USER: boilerapi
+      POSTGRES_SERVICE_PASSWORD: boilerapi
+      POSTGRES_SERVICE_DATABASE: boilerapi

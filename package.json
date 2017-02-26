@@ -1,0 +1,31 @@
+{
+  "name": "boiler-api",
+  "version": "1.0.3",
+  "description": "tools for building node.js apis",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo bash test {acceptance,unit}.sh",
+    "test:pretty": "tap-diff"
+  },
+  "dependencies": {
+    "async": "^2.1.4",
+    "body-parser": "^1.15.2",
+    "connect-redis": "^3.2.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "hat": "^0.0.3",
+    "ioredis": "^2.4.3",
+    "minimist": "^1.2.0",
+    "passport": "^0.3.2",
+    "pg": "^6.1.2"
+  },
+  "devDependencies": {
+    "object-hash": "^1.1.5",
+    "object-path": "^0.11.3",
+    "request": "^2.79.0",
+    "require-directory": "^2.1.1",
+    "tap-diff": "^0.1.1",
+    "tape": "^4.6.3"
+  }
+}
