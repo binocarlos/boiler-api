@@ -16,7 +16,7 @@ const args = require('minimist')(process.argv, {
     redisport: process.env.REDIS_SERVICE_PORT || 6379,
     redissessionprefix: process.env.REDIS_SESSION_PREFIX || 'session:',
     cookiesecret: process.env.COOKIE_SECRET || 'notsecure',
-    systeminstallation: process.env.SYSTEM_INSTALLATION || '217'
+    systeminstallation: process.env.SYSTEM_INSTALLATION || '1'
   }
 })
 
