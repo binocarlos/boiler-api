@@ -1,6 +1,6 @@
 {
   "name": "boiler-api",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "tools for building node.js apis",
   "main": "src/index.js",
   "scripts": {
