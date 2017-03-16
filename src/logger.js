@@ -27,7 +27,7 @@ const dumbLogger = (action, tracer, message) => {}
 
 const Logger = (name, opts) => {
   opts = opts || {}
-  const sink = opts.sink || dumbLogger
+  const sink = opts.sink || console.log
   const useLevel = opts.level ?
     LEVELS[opts.level] :
     LEVELS[LOGLEVEL]
