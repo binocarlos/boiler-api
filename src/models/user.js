@@ -64,7 +64,7 @@ const login = (runQuery, query, done) => {
     }
   }, (err, user) => {
     if(err) return done(err)
-    if(!user) return done()
+    if(!user) return done('incorrect details')
     done(null, tools.checkUserPassword(user, password) ? cleanData(user) : null)
   })
 }
