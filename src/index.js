@@ -26,6 +26,11 @@ const appFactory = (opts) => {
 
   const settings = Object.assign({}, coresettings, opts.settings)
 
+  if(!opts.noSettingsCheck && (!settings.postgresuser || !settings.postgrespassword)) {
+    console.error('postgresuser and postgrespassword required')
+    process.exit(1)
+  }
+
     // database setup
   const postgres = Postgres({
     user: settings.postgresuser,

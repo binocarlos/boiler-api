@@ -20,9 +20,4 @@ const args = require('minimist')(process.argv, {
   }
 })
 
-if(!args.postgresuser || !args.postgrespassword) {
-  console.error('postgresuser and postgrespassword required')
-  process.exit(1)
-}
-
 module.exports = args

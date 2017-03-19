@@ -3,10 +3,8 @@ const crypto = require('crypto')
 const hat = require('hat')
 const TRACER_KEY = 'x-tracer-id'
 
-const settings = require('./settings')
-
 const littleid = () => hat().substring(0,8)
-const getRandomEmail = () => littleid() + '@' + settings.emaildomain
+const getRandomEmail = (settings) => littleid() + '@' + settings.emaildomain
 const getRandomPassword = () => littleid()
 
 const ensureRequestTracerId = (req) => {
