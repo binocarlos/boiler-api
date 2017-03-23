@@ -5,7 +5,7 @@ const Installation = require('./installation')
 const CommandLog = require('./commandlog')
 const Utils = require('./utils')
 
-const Controllers = (dbclient, eventBus, userFactory) => {
+const Controllers = (dbclient, eventBus, userFactory, opts) => {
 
   const connection = dbclient.connection
   const transaction = dbclient.transaction
@@ -25,7 +25,7 @@ const Controllers = (dbclient, eventBus, userFactory) => {
   }
 
   const userControllers = userFactory ?
-    userFactory(dbclient, eventBus) :
+    userFactory(dbclient, eventBus, opts) :
     {}
 
   return Object.assign({}, coreControllers, userControllers)  

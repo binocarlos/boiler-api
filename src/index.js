@@ -54,20 +54,19 @@ const appFactory = (opts) => {
   // tooling
   const eventBus = EventBus()
   const postgresClient = PostgresClient(postgres)
-  const controllers = Controllers(postgresClient, eventBus, opts.controllers)
-  const switchboard = Switchboard(controllers, eventBus, opts.switchboard)
+  const controllers = Controllers(postgresClient, eventBus, opts.controllers, opts)
+  const switchboard = Switchboard(controllers, eventBus, opts.switchboard, opts)
 
   const passport = Passport(controllers)
   const app = App({
     session,
-    passport
+    passport,
+    opts
   })
 
   // routes
-  const access = AccessControl(settings, controllers, opts.access)
-  const routes = Routes(settings, controllers, opts.routes)
-  
-
+  const access = AccessControl(settings, controllers, opts.access, opts)
+  const routes = Routes(settings, controllers, opts.routes, opts)
 
   routes(app, access)
   app.use(tools.errorHandler)

@@ -5,7 +5,7 @@ const Logger = require('./logger')
 
 const logger = Logger('switchboard')
 
-function Switchboard(controllers, eventBus, UserCommands) {
+function Switchboard(controllers, eventBus, UserCommands, opts) {
 
   const commandlog = controllers.commandlog
   const installation = controllers.installation
@@ -16,7 +16,7 @@ function Switchboard(controllers, eventBus, UserCommands) {
   }
 
   const USER_COMMANDS = UserCommands ?
-    UserCommands(controllers) :
+    UserCommands(controllers, opts) :
     {}
 
   const COMMANDS = Object.assign({}, SYSTEM_COMMANDS, USER_COMMANDS)

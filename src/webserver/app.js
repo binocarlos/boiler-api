@@ -12,6 +12,7 @@ const logger = Logger('webserver')
 function App(settings) {
   const session = settings.session
   const passport = settings.passport
+  const opts = settings.opts || {}
 
   const app = express()
 
@@ -26,7 +27,7 @@ function App(settings) {
   app.use(session)
   app.use(passport.initialize())
   app.use(passport.session())
-  app.use(ParamMiddleware())
+  app.use(ParamMiddleware(opts))
 
   return app
 }

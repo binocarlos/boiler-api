@@ -29,13 +29,20 @@ const installationQuery = queryParam(INSTALLATIONID_QUERY_FIELDS)
 const ParamMiddleware = (opts) => (req, res, next) => {
   req.userid = req.user ? req.user.id : null
   req.qs = urlparse(req.url, true).query
-  req.installationid = installationQuery(req)
 
-  // enables secure system reading
-  if(req.installationid == 'system') {
-    req.installationid = settings.systeminstallation
-    req.systemInstallation = true
+  if(!opts.extractInstallation) {
+    req.installationid = installationQuery(req)
+
+    // enables secure system reading
+    if(req.installationid == 'system') {
+      req.installationid = settings.systeminstallation
+      req.systemInstallation = true
+    }  
   }
+  else {
+    opts.extractInstallation(req)
+  }
+  
   next()
 }
 

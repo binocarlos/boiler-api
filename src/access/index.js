@@ -2,7 +2,7 @@
 
 const AccessControl = require('./control')
 
-const factory = (settings, controllers, UserAccess) => {
+const factory = (settings, controllers, UserAccess, opts) => {
   const systemAccess = AccessControl(settings, controllers, {
     getInstallationAccess: (id) => {
       return id == settings.systeminstallation ?
@@ -12,7 +12,7 @@ const factory = (settings, controllers, UserAccess) => {
   })
 
   const userAccess = UserAccess ?
-    UserAccess(settings, controllers, systemAccess) :
+    UserAccess(settings, controllers, systemAccess, opts) :
     {}
 
   return Object.assign({}, systemAccess, userAccess)

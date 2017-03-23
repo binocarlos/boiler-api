@@ -7,7 +7,7 @@ const Version = require('./version')
 const Auth = require('./auth')
 const Installations = require('./installation')
 
-const Routes = (settings, controllers, userRoutes) => (app, access) => {
+const Routes = (settings, controllers, userRoutes, opts) => (app, access) => {
 
   const binds = tools.httpbinds(app, settings.base)
 
@@ -40,7 +40,7 @@ const Routes = (settings, controllers, userRoutes) => (app, access) => {
   binds.put('/installations/:id/activate', access.installation('viewer', 'path'), installations.activate)
 
   if(userRoutes) {
-    const userRouteFactory = userRoutes(settings, controllers)
+    const userRouteFactory = userRoutes(settings, controllers, opts)
     userRouteFactory(app, access)
   }
 }
