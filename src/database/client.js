@@ -48,6 +48,7 @@ const QueryFactory = (runner) => (q, done) => {
 }
 
 const getTracerFromReq = (req) => {
+  req = req || {}
   const userid = req.user ? req.user.id : null
   return {
     tracerid: req.id,
@@ -77,6 +78,11 @@ const Client = (postgres) => {
     q = processQuery(q)
     q.tracer = tracerData
     runQuery(q, done)
+  }
+
+  const run = (q, done) => {
+    q = processQuery(q)
+    query(q, done)
   }
 
   // run a transaction with a query object
@@ -117,6 +123,7 @@ const Client = (postgres) => {
   return {
     tracer,
     transaction,
+    run,
     connection: (req) => {
       const tracerData = getTracerFromReq(req)
       return {
