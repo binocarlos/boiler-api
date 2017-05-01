@@ -32,17 +32,19 @@ function Switchboard(controllers, eventBus, UserCommands, opts) {
   })
 
   // for every command - insert a command log
-  eventBus.listen((db, event, done) => {
-    if(event.type == 'command') {
-      commandlog.create(db, {
-        data: event
-      }, done)  
-    }
-    else {
-      done()
-    }
-  })
-
+  if(commandlog) {
+    eventBus.listen((db, event, done) => {
+      if(event.type == 'command') {
+        commandlog.create(db, {
+          data: event
+        }, done)  
+      }
+      else {
+        done()
+      }
+    })
+  }
+  
   // main command reactor
   eventBus.listen((db, event, done) => {
     if(event.type != 'command') return done()
