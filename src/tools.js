@@ -51,9 +51,11 @@ function generateUser(user) {
 function errorHandler(err, req, res, next) {
   let code = 500
   let message = ''
+  let stack = null
   let data = null
   if(err instanceof Error) {
-    err = err.message
+    message = err.message || err.toString()
+    stack = err.stack
   }
   else if(typeof(err) === 'string') {
     message = err
@@ -72,7 +74,8 @@ function errorHandler(err, req, res, next) {
     message = 'unknown error type: ' + typeof(err)
   }
   const errorData = Object.assign({}, data, {
-    error: message
+    error: message,
+    stack
   })
 
   res
