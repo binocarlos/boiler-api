@@ -1,23 +1,29 @@
 "use strict";
-const args = require('minimist')(process.argv, {
-  default:{
-    port: process.env.PORT || 80,
-    base: process.env.BASE || '/api/v1',
-    domain: process.env.DOMAIN || 'localhost',
-    emaildomain: process.env.EMAIL_DOMAIN || 'localhost',
-    diggerhost: process.env.DIGGER_SERVICE_HOST || 'digger',
-    diggerport: process.env.DIGGER_SERVICE_PORT || 80,
-    postgreshost: process.env.POSTGRES_SERVICE_HOST || 'postgres',
-    postgresport: process.env.POSTGRES_SERVICE_PORT || 5432,
-    postgresuser: process.env.POSTGRES_SERVICE_USER,
-    postgrespassword: process.env.POSTGRES_SERVICE_PASSWORD,
-    postgresdatabase: process.env.POSTGRES_SERVICE_DATABASE,
-    redishost: process.env.REDIS_SERVICE_HOST || 'redis',
-    redisport: process.env.REDIS_SERVICE_PORT || 6379,
-    redissessionprefix: process.env.REDIS_SESSION_PREFIX || 'session:',
-    cookiesecret: process.env.COOKIE_SECRET || 'notsecure',
-    systeminstallation: process.env.SYSTEM_INSTALLATION || '1'
-  }
-})
+const minimist = require('minimist')
 
-module.exports = args
+const Settings = (overrides) => {
+  const args = minimist(process.argv, {
+    default:{
+      port: process.env.PORT || 80,
+      base: process.env.BASE || '/api/v1',
+      mysqlhost: process.env.MYSQL_SERVICE_HOST || 'mysql',
+      mysqlport: process.env.MYSQL_SERVICE_PORT || 3306,
+      mysqluser: process.env.MYSQL_SERVICE_USER,
+      mysqlpassword: process.env.MYSQL_SERVICE_PASSWORD,
+      mysqldatabase: process.env.MYSQL_SERVICE_DATABASE,
+      postgreshost: process.env.POSTGRES_SERVICE_HOST || 'postgres',
+      postgresport: process.env.POSTGRES_SERVICE_PORT || 5432,
+      postgresuser: process.env.POSTGRES_SERVICE_USER,
+      postgrespassword: process.env.POSTGRES_SERVICE_PASSWORD,
+      postgresdatabase: process.env.POSTGRES_SERVICE_DATABASE,
+      redishost: process.env.REDIS_SERVICE_HOST || 'redis',
+      redisport: process.env.REDIS_SERVICE_PORT || 6379,
+      redissessionprefix: process.env.REDIS_SESSION_PREFIX || 'session:',
+      cookiesecret: process.env.COOKIE_SECRET || 'notsecure'
+    }
+  })
+
+  return Object.assign({}, args, overrides)
+}
+
+module.exports = Settings

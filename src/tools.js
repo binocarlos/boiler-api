@@ -1,20 +1,10 @@
 "use strict";
 const crypto = require('crypto')
 const hat = require('hat')
-const TRACER_KEY = 'x-tracer-id'
 
 const littleid = () => hat().substring(0,8)
 const getRandomEmail = (settings) => littleid() + '@' + settings.emaildomain
 const getRandomPassword = () => littleid()
-
-const ensureRequestTracerId = (req) => {
-  let existing = req.headers[TRACER_KEY]
-  if(!existing) {
-    existing = hat()
-    req.headers[TRACER_KEY] = existing
-  }
-  return existing
-}
 
 function makeSalt() {
   return Math.round((new Date().valueOf() * Math.random())) + '';
@@ -134,7 +124,6 @@ const httpbinds = (app, base) => {
 }
 
 module.exports = {
-  ensureRequestTracerId,
   makeSalt,
   encryptPassword,
   checkUserPassword,
