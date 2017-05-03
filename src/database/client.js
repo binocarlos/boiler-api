@@ -124,6 +124,7 @@ const Client = (postgres) => {
     tracer,
     transaction,
     run,
+    postgres,
     connection: (req) => {
       const tracerData = getTracerFromReq(req)
       return {
